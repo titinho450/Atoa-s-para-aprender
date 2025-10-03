@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int numero_secreto, palpite, tentativas = 0;
+    int max_tentativas = 5;
+
+    
+    srand(time(NULL));
+    numero_secreto = rand() % 20 + 1; 
+
+    printf("Tente adivinhar o número que estou pensando, entre 1 e 20!\n");
+    printf("Você tem %d tentativas.\n", max_tentativas);
+
+    while (tentativas < max_tentativas) {
+        printf("Digite seu palpite: ");
+        scanf("%d", &palpite);
+        tentativas++;
+
+        if (palpite == numero_secreto) {
+            printf("Parabéns! Você acertou o número em %d tentativas!\n", tentativas);
+            break;
+        } else if (palpite < numero_secreto) {
+            printf("O número é maior.\n");
+        } else {
+            printf("O número é menor.\n");
+        }
+    }
+
+    if (tentativas == max_tentativas && palpite != numero_secreto) {
+        printf("Suas tentativas acabaram! O número era %d.\n", numero_secreto);
+    }
+
+    return 0;
+}
